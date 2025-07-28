@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Available Rooms | UKR International</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #002244;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .room {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .room:hover {
+      transform: translateY(-5px);
+    }
+
+    .room img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .room h2 {
+      margin: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .room p {
+      margin: 0 1rem 1rem;
+      color: #666;
+    }
+
+    .room a {
+      display: block;
+      text-align: center;
+      margin: 1rem;
+      padding: 0.75rem;
+      background-color: #0066cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .room a:hover {
+      background-color: #004c99;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #002244;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Explore Our Premium Rooms</h1>
+  </header>
+
+  <main class="room-grid">
+    <div class="room">
+      <img src="https://th.bing.com/th/id/OIP.l1FYzrvBp_f_65SpdJP7cQHaGa?w=128&h=108&c=7&bgcl=790ab7&r=0&o=6&cb=thws4&dpr=3&pid=13.1" alt="Deluxe Room" />
+      <h2>Deluxe Room</h2>
+      <p>₹2500 / night</p>
+      <a href="bookroom.html?room=Deluxe">Book Now</a>
+    </div>
+
+    <div class="room">
+      <img src="https://th.bing.com/th/id/OIP.UqbH0hLECCVAeL4UBxI4xAHaGa?w=128&h=108&c=7&bgcl=ccf47a&r=0&o=6&cb=thws4&dpr=3&pid=13.1" alt="Suite Room" />
+      <h2>Suite Room</h2>
+      <p>₹4000 / night</p>
+      <a href="bookroom.html?room=Suite">Book Now</a>
+    </div>
+
+    <div class="room">
+      <img src="https://th.bing.com/th/id/OIP.U5_p-I1HC_rhAt_WNUDJagHaGa?w=128&h=108&c=7&bgcl=96a651&r=0&o=6&cb=thws4&dpr=3&pid=13.1" alt="Economy Room" />
+      <h2>Economy Room</h2>
+      <p>₹1500 / night</p>
+      <a href="BookRoom.html?room=Economy">Book Now</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 UKR International. All rights reserved.
+  </footer>
+</body>
+</html>

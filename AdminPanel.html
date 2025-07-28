@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel | UKR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 2rem;
+    }
+
+    .login-box, .booking-list {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #002244;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .clear-btn {
+      background-color: red;
+    }
+
+    .booking {
+      background-color: #e6f0ff;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-left: 5px solid #0066cc;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .booking strong {
+      color: #003366;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Admin Login -->
+  <div class="login-box" id="loginBox">
+    <h1>Admin Login</h1>
+    <label for="adminPass">Enter Admin Password:</label>
+    <input type="password" id="adminPass" placeholder="Enter password" />
+    <button onclick="verifyAdmin()">🔐 Unlock</button>
+  </div>
+
+  <!-- Booking List -->
+  <div class="booking-list" id="bookingList" style="display: none;">
+    <h1>📋 All Bookings</h1>
+    <div id="bookings"></div>
+    <button class="clear-btn" onclick="clearBookings()">🗑️ Clear All Bookings</button>
+  </div>
+
+  <script>
+    const ADMIN_PASSWORD = 'ukr123';
+
+    function verifyAdmin() {
+      const pass = document.getElementById('adminPass').value;
+      if (pass === ADMIN_PASSWORD) {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('bookingList').style.display = 'block';
+        showBookings();
+      } else {
+        alert('❌ Incorrect password!');
+      }
+    }
+
+    function showBookings() {
+      const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+      const container = document.getElementById('bookings');
+      container.innerHTML = ''; // Clear previous results
+
+      if (bookings.length === 0) {
+        container.innerHTML = "<p>No bookings found.</p>";
+        return;
+      }
+
+      bookings.forEach((b, i) => {
+        const bookingEl = document.createElement('div');
+        bookingEl.className = 'booking';
+        bookingEl.innerHTML = `
+          <p><strong>#${i + 1}</strong> - ${b.room}</p>
+          <p><strong>Name:</strong> ${b.name}</p>
+          <p><strong>Email:</strong> ${b.email}</p>
+          <p><strong>Check-in:</strong> ${b.checkinDate} at ${b.checkinTime}</p>
+          <p><strong>Check-out:</strong> ${b.checkoutDate} at ${b.checkoutTime}</p>
+        `;
+        container.appendChild(bookingEl);
+      });
+    }
+
+    function clearBookings() {
+      const confirmDelete = confirm("Are you sure you want to delete all bookings?");
+      if (confirmDelete) {
+        localStorage.removeItem('bookings');
+        document.getElementById('bookings').innerHTML = "<p>All bookings cleared.</p>";
+      }
+    }
+  </script>
+
+</body>
+</html>
